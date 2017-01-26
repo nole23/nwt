@@ -1,0 +1,14 @@
+{
+  "name": "napredne-web-tehnologije",
+  "version": "0.0.1",
+  "description": "Projekat iz naprednih web tehnologija backend rest nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Novica Nikolic <nole0223@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "nodemailer": "^0.7.1"
+  }
+}

@@ -1,0 +1,25 @@
+1. Registracija 					| X
+2. Login						| X
+3. Dodavanje nove aplikacije				| X
+4. Dodavanje aplikaciji novog odgovornog		| X
+5. Slanje greske na server				| X
+6. Primanje greske					| X
+7. Notifikacija korisnika koji su vezani za gresku	| X
+8. Prikaze svih podataka o aplikaciji pomocu domena	| X
+
+
+"mail":"nole0223@gmail.com",
+"sifra":"123"
+
+"naziv":"spring",
+
+"opis":"spring aplikacija za projekat",
+
+"verzija":"7.2",
+
+"link":"spring.com",
+
+"domen":"spring"
+
+
+Provera dodavanja aplikacije

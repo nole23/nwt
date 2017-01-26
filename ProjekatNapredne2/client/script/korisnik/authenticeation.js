@@ -1,0 +1,58 @@
+/**
+ * 
+ */
+
+(function () {
+    angular
+        .module('app')
+        .factory('LoginResources', Service);
+
+    function Service($http, $localStorage, $log, $window, jwtHelper) {
+        var service = {};
+
+        service.login = login;
+        service.logout = logout;
+        service.getCurrentUser = getCurrentUser;
+
+        return service;
+
+        function login(email, sifra, callback) {
+            $http.post('/api/authenticate/', { mail: email, sifra: sifra })
+                .success(function (response) {
+                    // ukoliko postoji token, prijava je uspecna
+                   if (response.token) {
+                        // korisnicko ime, token i rola (ako postoji) cuvaju se u lokalnom skladištu
+                        var currentUser = { email: email, token: response.token }
+                        var tokenPayload = jwtHelper.decodeToken(response.token);
+
+                        $localStorage.currentUser = currentUser;
+                        $http.defaults.headers.common.Authorization = response.token;
+                        
+                        console.log(response.success);
+
+                        callback(response);
+                    } else {
+                        // callback za neuspesan login
+                        callback(response);
+                    }
+                   
+                });
+        }
+
+
+
+        function logout() {
+            // uklonimo korisnika iz lokalnog skladišta
+            delete $localStorage.currentUser;
+            $http.defaults.headers.common.Authorization = '';
+            
+        }
+
+        function getCurrentUser() {
+            return $localStorage.currentUser;
+        }
+
+
+        
+    }
+})();
