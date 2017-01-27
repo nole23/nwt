@@ -99,20 +99,20 @@
 				<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 					<div class="login-panel panel panel-default">
 						<div class="panel-heading">Create new acount</div>
-						<div class="panel-body">
-							<form role="form">
+						<div class="panel-body" ng-controller="RegistrationCtrl">
+							<form role="form" ng-submit="register()">
 								<fieldset>
 									<div class="form-group">
-										<input class="form-control" placeholder="First name.." name="ime" type="text">
+										<input class="form-control" placeholder="First name.." name="ime" type="text" ng-model="korisnik.ime"
 									</div>
 									<div class="form-group">
-										<input class="form-control" placeholder="Last name.." name="prezime" type="text">
+										<input class="form-control" placeholder="Last name.." name="prezime" type="text" ng-model="korisnik.prezime">
 									</div>
 									<div class="form-group">
-										<input class="form-control" placeholder="E-main.." name="mail" type="mail">
+										<input class="form-control" placeholder="E-main.." name="mail" type="mail" ng-model="korisnik.mail">
 									</div>
 									<div class="form-group">
-										<input class="form-control" placeholder="Password" name="sifra" type="password" value="">
+										<input class="form-control" placeholder="Password" name="sifra" type="password" value="" ng-model="korisnik.sifra">
 									</div>
 									<a href="" class="btn btn-primary">Create</a> <a href="" onclick="myFunction(1)" class="btn btn-primary">Login</a>
 								</fieldset>
