@@ -27,19 +27,19 @@ router
                 console.log(err);
                 Korisnik.findOne({mail:mail}, function(err, provera) {
                     if(err) {
-                        return res.status(404).send('Greska na serveru');
+                       res.json({success: false});
                     }
                     if(!provera) {
-                        return res.status(500).send('Niste se ulogovali proverite podatke koje unosite');
+                        res.json({success: false, msg: 'Mail ne postoji'});
                     } else {
                         
-                        return res.status(500).send('Ovaj mail je vec registrovan u bazi');
+                        res.json({success: false});
                     }
                 })
                 
                 
             }
-            return res.status(200).send('Uspjesno ste se registrovali mozete se ulogovati');  
+            res.json({success: true});
         })
     })
 
