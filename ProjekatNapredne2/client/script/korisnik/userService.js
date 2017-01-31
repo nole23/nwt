@@ -12,10 +12,13 @@
  
         return service;
  
-        function GetAll(korisnik, callBack) {
-           $http.post('/api/users', korisnik).success(function (data) {
+        function Create(korisnik, callBack) {
+           
+           $http.post('/api/user/', korisnik).success(function (data) {
 			   callBack(data);
+               console.log(data);
 		   });
+           
         }
  
        

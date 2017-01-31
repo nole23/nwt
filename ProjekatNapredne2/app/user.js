@@ -22,25 +22,33 @@ router
         user.prezime = lname;
         user.sifra = pass;
         user.mail = mail;
-        user.save(function(err, saveUser){
+        
+        Korisnik.findOne({mail: mail}, function(err, korisnik) {
             if(err) {
-                console.log(err);
-                Korisnik.findOne({mail:mail}, function(err, provera) {
-                    if(err) {
-                       res.json({success: false});
-                    }
-                    if(!provera) {
-                        res.json({success: false, msg: 'Mail ne postoji'});
-                    } else {
-                        
-                        res.json({success: false});
-                    }
-                })
-                
-                
+                res.json({success: false, msg: 'server'});
             }
-            res.json({success: true});
+            if(!korisnik) {
+                if(!mail) {
+                    res.json({success: false, msg: 'mail'});
+                } else if(!pass) {
+                    res.json({success: false, msg: 'sifra'});
+                } else {
+                    
+                    user.save(function(err, saveUser){
+                        if(err) {
+                            res.json({success: false, msg: 'neCuva'});
+                        } else {
+                            res.json({success: true, msg: 'sacuvano'}); 
+                        }
+                    })
+                }
+            } else {
+                res.json({success: false, msg: 'mail'});
+            }
         })
+                    
+                    
+            
     })
 
 module.exports = router;

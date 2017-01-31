@@ -32,9 +32,9 @@
 						<a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
 						<ul class="user-menu">
 							<li class="dropdown pull-right">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
+								<a href="" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
+									<li><a href="#/profile"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
 									<li><a href="" ng-click="logout()"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
 								</ul>
 							</li>
@@ -48,11 +48,10 @@
 				
 				<ul class="nav menu">
 					
-					<li><a href="index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Prikaz svih korisnika</a></li>
-					<li><a href=""><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Dodati novu aplikaciju </a></li>
-					<li><a href=""><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Prikaz aplikacije</a></li>
-					<li><a href=""><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Dodati odgovornog </a></li>
-					<li><a href=""><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Sve aplikacije</a></li>
+					<li><a href="#/"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Pocetna stranica</a></li>
+					<li><a href="#/new/aplication"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Dodati novu aplikaciju </a></li>
+					<li><a href="#/my/aplication"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Prikaz aplikacije</a></li>
+					<li><a href="#/all/aplication"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Sve aplikacije</a></li>
 					<li><a href=""><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Hvatanje greske </a></li>
 						
 				</ul>
@@ -76,6 +75,11 @@
 				<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 					<div class="login-panel panel panel-default">
 						<div class="panel-heading">Log in</div>
+
+						<div class="alert bg-danger" role="alert" id="login" ng-if="messageLogin == true">
+							<svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Niste se ulogovali, probajte ponovo <a href="" onclick="myFunction(4)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+						</div>
+
 						<div class="panel-body" ng-controller="LoginCtrl">
 							<form role="form" ng-submit="login()">
 								<fieldset>
@@ -99,22 +103,31 @@
 				<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 					<div class="login-panel panel panel-default">
 						<div class="panel-heading">Create new acount</div>
+
+						<div class="alert bg-success" role="alert" id="sacuvano" style="display: none">
+							<svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"></use></svg> Uspesno ste se registrovali! Sada mozete da se ulogujete pomocu sledeceg linka  <a href="" onclick="myFunction(1)" class="btn btn-primary">Login</a><a href="" onclick="myFunction(3)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+						</div>
+
 						<div class="panel-body" ng-controller="RegistrationCtrl">
 							<form role="form" ng-submit="register()">
 								<fieldset>
 									<div class="form-group">
-										<input class="form-control" placeholder="First name.." name="ime" type="text" ng-model="korisnik.ime"
+										<input class="form-control" placeholder="First name.." name="ime" type="text" ng-model="korisnik.ime">
+										
 									</div>
 									<div class="form-group">
 										<input class="form-control" placeholder="Last name.." name="prezime" type="text" ng-model="korisnik.prezime">
 									</div>
 									<div class="form-group">
-										<input class="form-control" placeholder="E-main.." name="mail" type="mail" ng-model="korisnik.mail">
+										<input class="form-control" placeholder="E-main.." name="mail" type="email" ng-model="korisnik.mail">
+										<div style="color: red" ng-if="messageUser == 'mail'">Mail je zauzet ili nije unet</div>
+										
 									</div>
 									<div class="form-group">
 										<input class="form-control" placeholder="Password" name="sifra" type="password" value="" ng-model="korisnik.sifra">
+										<div style="color: red" ng-if="messageUser == 'sifra'">Sifra nije uneta</div>
 									</div>
-									<a href="" class="btn btn-primary">Create</a> <a href="" onclick="myFunction(1)" class="btn btn-primary">Login</a>
+									<input type="submit" class="btn btn-primary" value="Create"> <a href="" onclick="myFunction(1)" class="btn btn-primary">Login</a>
 								</fieldset>
 							</form>
 						</div>
@@ -139,6 +152,10 @@
 				} else if(id == 2) {
 					document.getElementById("myDropdown2").style.display = "";
 					document.getElementById("myDropdown1").style.display = "none";
+				} else if(id == 3) {
+					document.getElementById("sacuvano").style,display = "none";
+				} else if(id == 4) {
+					document.getElementById("login").style,display = "none";
 				}
 			}
 			window.onclick = function(event) {
@@ -173,6 +190,11 @@
 		<script src="script/app.js"></script>
 		<script src="script/korisnik/login.js"></script>
 		<script src="script/korisnik/authenticeation.js"></script>
+		<script src="script/aplikacija/aplikacija-ctrl.js"></script>
+		<script src="script/aplikacija/aplikacija-resource.js"></script>
+		<script src="script/korisnik/registration.js"></script>
+		<script src="script/korisnik/userService.js"></script>
+		
 
 		
 	</body>

@@ -13,6 +13,7 @@
         service.login = login;
         service.logout = logout;
         service.getCurrentUser = getCurrentUser;
+        service.myProfile = myProfile;
 
         return service;
 
@@ -22,13 +23,14 @@
                     // ukoliko postoji token, prijava je uspecna
                    if (response.token) {
                         // korisnicko ime, token i rola (ako postoji) cuvaju se u lokalnom skladištu
-                        var currentUser = { email: email, token: response.token }
+                        
                         var tokenPayload = jwtHelper.decodeToken(response.token);
+                        var currentUser = { email: email, token: response.token };
 
                         $localStorage.currentUser = currentUser;
                         $http.defaults.headers.common.Authorization = response.token;
                         
-                        console.log(response.success);
+                        
 
                         callback(response);
                     } else {
@@ -38,8 +40,6 @@
                    
                 });
         }
-
-
 
         function logout() {
             // uklonimo korisnika iz lokalnog skladišta
@@ -52,7 +52,9 @@
             return $localStorage.currentUser;
         }
 
-
+        function myProfile() {
+            console.log();
+        }
         
     }
 })();

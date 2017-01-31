@@ -120,6 +120,18 @@ router
         })
     })
 
+    .get('/error/heandle/:domen', function(req, res) {
+        var domen = req.params.domen;
+        Izuzetak.find({domen: req.params.domen}, function(err, izuzetak) {
+            if(err) throw err;
+            if(!izuzetak) {
+                res.json({success: false, msg:'Nema ni jedan izuzetak'});
+            } else {
+                res.json(izuzetak);
+            }
+        })
+    })
+
 module.exports = router;
 
 function dateDisplayed(timestamp) {

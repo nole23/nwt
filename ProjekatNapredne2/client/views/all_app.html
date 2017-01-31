@@ -1,0 +1,26 @@
+<div class="row" ng-controller="AllMyAppCtrl">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Sve aplikacije</strong> <em>(Sve aplikacije na kojima sam admin)</em>
+            </div>
+            <div class="panel-body">
+
+
+                <div ng-repeat="app in aplikacija">
+                    
+                    <a href="#/aplication/{{app.domen}}">
+                        <div class="icon-grid">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <svg class="glyph stroked app window with content"><use xlink:href="#stroked-app-window-with-content"/></svg>
+                                <pre>{{app.naziv}}</pre>
+                            </div>
+                        </div>
+                        </a>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

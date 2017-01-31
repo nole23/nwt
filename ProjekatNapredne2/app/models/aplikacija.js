@@ -6,9 +6,13 @@ var AplikacijaSchema = new Schema({
     opis: String,
     verzija: String,
     link: String,
-    domen: String,
+    domen: {
+         type: String,
+         unique: true
+    },
     odgovorni: [{
-       type: Schema.Types.ObjectId, ref: "Korisnik"
+       type: Schema.Types.ObjectId, ref: "Korisnik",
+       unique: true
     }]
 
 });

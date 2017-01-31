@@ -13,27 +13,6 @@ var Korisnik = require('./models/korisnik.js');
 router
 
     .post('/authenticate/', function(req, res) {
-        /*
-        var pass = req.body.sifra;
-        var mail = req.body.mail;
-
-        Korisnik.findOne({mail: mail, sifra: pass}, function(err, korisnik) {
-            if(err) {
-                res.redirect('/authenticate/');
-                return res.status(500).send(err);
-            }
-            if(!korisnik) {
-                return res.status(404).send('Korisnik nije pronadjen u bazi');
-            } else {
-                console.log('uspjesno logovanje');
-                var token = jwt.encode(korisnik, 'XWSMeanDevelopment');
-                var resObject = { success: true, token: token };
-                //req.session.user = korisnik;
-                res.json(resObject);
-                
-            }
-        })
-        */
 
         Korisnik.findOne({
             mail: req.body.mail
@@ -44,7 +23,7 @@ router
             } else {
                Korisnik.findOne({mail: req.body.mail, sifra: req.body.sifra}, function(err, korisnik) {
                     if(err) {
-                        res.send({success: false});
+                        res.send({success: false, msg: 'sifra'});
                     }
                     if(!korisnik) {
                         res.send({success: false, error: 'sifra'});

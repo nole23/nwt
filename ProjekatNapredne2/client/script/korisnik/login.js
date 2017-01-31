@@ -15,21 +15,26 @@ angular.module('app') // ... omitted code
             };
 
             function callBack(success) {
-                if (success.error == 'email') {
+                if (success.msg == 'email') {
                     $scope.messageLogin = success.error;
                     //window.location = '#/'
-                } else if(success.error == 'sifra'){
+                    console.log(success.msg);
+                } else if(success.msg == 'sifra'){
                     $scope.messageLogin = success.error;
-                    
+                    console.log(success.msg);
                 }  else if(success.success == true) {
                     $log.info('success!');
                     //console.log(success.token);
-                    
+                    console.log(success);
                     window.location = '#/';
                     
                     
                     
                 }
             }
-	 
-	}]);
+            
+            $scope.myProfile = function() {
+                LoginResources.myProfile($scope, callBackPrfile);
+            }
+	}])
+    

@@ -1,13 +1,8 @@
 'use strict';
 
 angular.module('app') // ... omitted code
-	.controller('RegistrationCtrl', ['$scope', '$localStorage', '$http', '$window', '_', '$rootScope', 'UserService', 'FlashService',
-	   function($scope, $localStorage, $http, $window, _, $rootScope, UserService, FlashService) {
-
-        
-            $scope.isLogin = false;
-       //     $scope.korisnik={};
-            $scope.register = register;
+	.controller('RegistrationCtrl', ['$scope', 'UserService', '$window',
+	   function($scope, UserService, $window) {
             
             $scope.register = function () {
                 
@@ -16,8 +11,10 @@ angular.module('app') // ... omitted code
             };
 			
 			function callBack(success) {
-				if(success.success == true) {
-					console.log('sacuvano');
+				if(success.success == false) {
+					$scope.messageUser = success.msg;
+				} else if(success.success = true) {
+					document.getElementById("sacuvano").style.display = "";
 				}
 			}
 

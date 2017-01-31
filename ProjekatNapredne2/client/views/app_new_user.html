@@ -1,0 +1,38 @@
+<div style="margin: 2%; font-size: 20px; border-bottom: 1px solid #333; ">
+    <p style="margin: 0">Dodajte novog korisnika aplikaciji {{aplikacija}}</p>
+
+</div>
+
+
+<div style="margin: 2%">
+    
+        <div class="form-group">
+            <label>Pronadjite korisnika</label>
+            <input class="form-control" placeholder="Ovde kucajte da pronadjete korisnika..." ng-model="search.$">
+        </div>
+
+        <div class="alert bg-success" role="alert" id="nista" ng-show="mesages == true">
+            <svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"></use></svg> Uspjesno ste dodali novog admina aplikaciji {{aplikacija}} <a href="" onclick="myFunction(1)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+
+        <div ng-repeat="korisnik in korisnici | filter:search">
+            <div class="col-xs-12 col-md-6 col-lg-3" >
+                <div class="panel panel-teal panel-widget">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5 widget-left">
+                            <svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <div class="large">{{korisnik.ime}}</div>
+                            <input type="hidden" value="{{korisnik.mail}}">
+                            <div class="text-muted">{{korisnik.prezime}}</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%" ng-click="dodati(korisnik.mail)">Dodajte</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+</div>

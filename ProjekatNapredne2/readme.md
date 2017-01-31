@@ -4,22 +4,22 @@ Aplikacija je jednostavan REST back end za projekat
 
 ## API
 
-* `GET api/` - pocetna stranica sajta *
-* `POST api/login/` - logovanje vec postojec korisnika *
-* `POST api/user/` - registracija novog korisnika **
-* `DELETE api/user/:id` - brisanje odredjenog korisnika po id *
-* `GET api/users/all` - prikaz svih korisnika *
-* `POST api/aplication` - dodavanje nove aplikacije *
-* `GET api/:domen` - prikaz podataka odredjene aplikacije *
-* `PUT api/:domen/user` - dodavanje novog odgovornog korisnika za datu aplikaciju *
-* `POST api/:domen/error` - hvatanje greske sa odredjene aplikacije
+* `GET api/` - pocetna stranica sajta **
+* `POST api/login/` - logovanje vec postojec korisnika **
+* `POST api/user/` - registracija novog korisnika *
+* `DELETE api/user/:id` - brisanje odredjenog korisnika po id **
+* `GET api/users/all` - prikaz svih korisnika *|*
+* `POST api/aplication` - dodavanje nove aplikacije **
+* `GET api/:domen` - prikaz podataka odredjene aplikacije **
+* `PUT api/:domen/user` - dodavanje novog odgovornog korisnika za datu aplikaciju **
+* `POST api/:domen/error` - hvatanje greske sa odredjene aplikacije *
 
 
 
 
 ## Struktura aplikacije
 
-U folderu `app/model` nalaze se modeli - blogEntry i comment.
+U folderu `app/model` nalaze se modeli.
 
 
 ## Pokretanje aplikacije
@@ -32,3 +32,4 @@ U folderu `app/model` nalaze se modeli - blogEntry i comment.
 6. pokretati aplikacije pomoću `node server.js`
 7. Instalirati `npm install nodemailer@0.7.1 --save`
 8. install `npm install nodemailer-smtp-transport`
+9. install `npm install body-parser`

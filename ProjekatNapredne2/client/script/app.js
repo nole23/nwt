@@ -16,7 +16,31 @@ angular
             .when('/', {
                 templateUrl: 'views/main.html'
             })
-
+            .when('/new/aplication', {
+                templateUrl: 'views/add_app.html',
+                controller: 'AddAppCtrl'
+            })
+            .when('/aplication/:domen', {
+                templateUrl: 'views/aplication.html',
+                contoller: 'AplicationCtrl'
+            })
+            .when('/my/aplication', {
+                templateUrl: 'views/all_app.html',
+                controller: 'AllMyAppCtrl'
+            })
+            .when('/all/aplication', {
+                templateUrl: 'views/all_application.html',
+                controller: 'AllAppCtrl'
+            })
+            .when('/aplication/:domen/new/admin', {
+                templateUrl: 'views/app_new_user.html',
+                controller: 'AppUserCtrl'
+            })
+            .when('/profile', {
+                templateUrl: 'views/my_profil.html',
+                controller: 'AppUserCtrl'
+            })
+            
             .otherwise({
                 redirectTo: '/'
             });
@@ -45,7 +69,7 @@ angular
               return undefined;
             }
             else{
-              return LoginResources.getCurrentUser().rola;
+              return LoginResources.getCurrentUser().email;
             }
         }
         $rootScope.isLoggedIn = function () {

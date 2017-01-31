@@ -9,6 +9,12 @@
   "author": "Novica Nikolic <nole0223@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "nodemailer": "^0.7.1"
+    "nodemailer": "^0.7.1",
+	"express" : "4.2.x",
+	"body-parser" : "1.16.0",
+	"jwt-simple" : "0.5.1",
+	"mongoose" : "4.8.1",
+	"passport" : "0.3.2",
+	"express-session" : "1.15.0"
   }
 }
